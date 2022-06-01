@@ -1,0 +1,62 @@
+﻿@page "/testpageactionmodal"
+@using Piz.Blazor.Mobile.UI.Components.Modal
+@using Piz.Blazor.Mobile.UI.Page
+
+
+<Page PageTitle="Action Modal Component" IsBackActive="false"> 
+    <PageContent>
+         <div class="wide-block pt-2 pb-2">
+            <p>
+                <button type="button" class="btn btn-secondary" data-bs-toggle="offcanvas" data-bs-target="#testSheet">Show Action Sheet</button>                                   
+            </p>                
+        </div>
+
+        <ActionSheet ID="testSheet" ActionTitle="Actions">
+            <ActionSheetContent>
+                <ul class="action-button-list">
+                    <li>
+                        <a href="#" class="btn btn-list text-primary" data-bs-dismiss="offcanvas">
+                            <span>
+                                <ion-icon name="document-outline"></ion-icon>
+                                Open
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn btn-list" data-bs-dismiss="offcanvas">
+                            <span>
+                                <ion-icon name="trash-outline"></ion-icon>
+                                Delete
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn btn-list" data-bs-dismiss="offcanvas">
+                            <span>
+                                <ion-icon name="copy-outline"></ion-icon>
+                                Copy
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn btn-list" data-bs-dismiss="offcanvas">
+                            <span>
+                                <ion-icon name="share-outline"></ion-icon>
+                                Share
+                            </span>
+                        </a>
+                    </li>
+                    <li class="action-divider"></li>
+                    <li>
+                        <a href="#" class="btn btn-list text-danger" data-bs-dismiss="offcanvas">
+                            <span>
+                                <ion-icon name="close-outline"></ion-icon>
+                                Close
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </ActionSheetContent>
+        </ActionSheet>
+    </PageContent>
+</Page>
