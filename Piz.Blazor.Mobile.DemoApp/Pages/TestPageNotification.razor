@@ -1,0 +1,100 @@
+﻿@page "/testnotification"
+@using Piz.Blazor.Mobile.UI.Components.Alerts;
+@using Piz.Blazor.Mobile.UI.Models
+@using Piz.Blazor.Mobile.UI.Page
+@using Piz.Blazor.Mobile.UI.Enum
+@using Piz.Blazor.Mobile.UI.Services;
+
+<Page PageTitle="Notification" IsBackActive="false">
+    <PageContent>
+
+        <div class="wide-block pt-2 pb-2">
+            <ul class="listview">
+                <li>
+                    <button type="button" class="btn btn-secondary" @onclick="onclickbuttonShow">
+                        Show Ios Style
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-secondary" @onclick="onclickbuttonAndroidShow">
+                        Show Android Style
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-secondary" @onclick="onclickbuttonShowService">
+                        Show Notification Sevice
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <Notification ID="testnotification" NotificationStyle=UIStyle.ios Show="@shownotification" BackgroundColor=ColorStyle.primary>
+            <NotificationHeader>
+                <div>
+                    <img src="_content/Piz.Blazor.Mobile.UI/assets/img/sample/avatar/avatar1.jpg" alt="image" class="imaged w24 rounded">
+                    <strong>Pablo Escobar</strong>
+                    <span>cocaine</span>
+                </div>
+            </NotificationHeader>
+            <NotificationContent>
+                <div class="in">
+                    <h3 class="subtitle">Hello There</h3>
+                    <div class="text">
+                        This is a simple ios style notification.
+                    </div>
+                </div>
+            </NotificationContent>
+        </Notification>
+
+        <Notification ID="testnotifAndroid" NotificationStyle=UIStyle.android
+                      Show="@shownotificationAndroid" CloseType=CloseStyle.taptoclose>
+            <NotificationHeader>
+                <div>
+                    <img src="_content/Piz.Blazor.Mobile.UI/assets/img/sample/avatar/avatar1.jpg" alt="image" class="imaged w24 rounded">
+                    <strong>Pablo Escobar</strong>
+                    <span>cocaine</span>
+                </div>
+            </NotificationHeader>
+            <NotificationContent>
+                <div class="in">
+                    <h3 class="subtitle">Tap to close!!!</h3>
+                    <div class="text">
+                        This is a simple Android style notification.
+                    </div>
+                </div>
+            </NotificationContent>
+        </Notification>
+    </PageContent>
+</Page>
+
+@code {
+
+    [Inject]
+    INotificationService notificationService { get; set; }
+
+    private bool shownotification = false;
+    private bool shownotificationAndroid = false;
+
+    private void onclickbuttonShow()
+    {
+        shownotificationAndroid = false;
+        shownotification = true;
+    }
+
+    private void onclickbuttonAndroidShow()
+    {
+        shownotification = false;
+        shownotificationAndroid = true;
+    }
+
+    private void onclickbuttonShowService()
+    {
+        shownotification = false;
+        shownotificationAndroid = false;
+
+        NotificationMessage msg = new NotificationMessage() { Message = "Hi from service!!!", Title = "Service Message" };
+
+        notificationService.ShowNotification(msg);
+    }
+
+}
