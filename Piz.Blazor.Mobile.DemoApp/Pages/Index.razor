@@ -1,0 +1,31 @@
+﻿@using Piz.Blazor.Mobile.UI.Components.UIElement
+@using Piz.Blazor.Mobile.UI.Components.Modal
+@using Piz.Blazor.Mobile.UI.Page
+@page "/"
+
+
+<Page PageTitle="Home" IsBackActive="false"> 
+    <PageContent>
+        <div class="wide-block pt-2 pb-2" style="height:90vh; background-color:#5a595921; ">
+            <p>                
+                <a class="btn btn-primary" href="testbackpage" >next page</a>
+
+                <button type="button" class="btn btn-secondary" onclick="androidAddtoHome();">
+                    <ion-icon name="logo-android"></ion-icon>
+                    Android
+                </button>
+                <button type="button" class="btn btn-secondary" onclick="iosAddtoHome();">
+                    <ion-icon name="logo-apple"></ion-icon>
+                    iOS
+                </button>
+                
+            </p>                
+        </div>        
+
+        <AndroidAddToHome ApplicationName="MyTestApp"/>
+        <IosAddToHome ApplicationName="MyTestApp" />
+
+    </PageContent>
+</Page>
+
+

@@ -1,0 +1,59 @@
+﻿@using Piz.Blazor.Mobile.UI.Components.UIElement
+@using Piz.Blazor.Mobile.UI.Models
+@using Piz.Blazor.Mobile.UI.Components.Alerts
+@inherits LayoutComponentBase
+
+<AppSideBar MenuItems="@menuItems" SideBarButtons="@sidebarbutton">
+    <ProfileBox>        
+                <div class="image-wrapper">
+                    <img src="_content/Piz.Blazor.Mobile.UI/assets/img/sample/avatar/avatar1.jpg" alt="image" class="imaged rounded">
+                </div>
+                <div class="in">
+                    <strong>Piz.Blazor User</strong>
+                    <div class="text-muted">
+                        <ion-icon name="location" role="img" class="md hydrated" aria-label="location"></ion-icon>
+                        Verona
+                    </div>
+                </div>
+                <a href="#" class="close-sidebar-button" data-bs-dismiss="offcanvas">
+                    <ion-icon name="close" role="img" class="md hydrated" aria-label="close"></ion-icon>
+                </a>        
+    </ProfileBox>
+</AppSideBar>
+
+<ToastNotification />
+
+<!-- App Capsule -->
+<div id="appCapsule" class="full-height">
+    <div class="section full mt-2">
+        @Body       
+    </div>
+</div>
+
+@code   
+{
+    private List<MenuItem> sidebarbutton = null;
+
+    private List<MenuItem> menuItems = new List<MenuItem>
+    {
+        new MenuItem {Icon="home-outline", Url="/", Label="Home"},        
+    };
+
+    protected override void OnInitialized()
+    {
+         sidebarbutton = new List<MenuItem>
+            {
+                new MenuItem {Icon="person-outline" , OnclickEvent=new EventCallbackFactory().Create(this, onclickButton),Url=string.Empty },
+                new MenuItem {Icon="archive-outline",Url="#" },
+                new MenuItem {Icon="settings-outline",Url="#" },
+                new MenuItem {Icon="log-out-outline",Url="#" },
+            };
+
+        base.OnInitialized();
+    }
+
+    private void onclickButton()
+    {
+        Console.WriteLine("clicked");
+    }
+}
