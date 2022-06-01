@@ -1,0 +1,56 @@
+﻿@page "/testtoast"
+@using Piz.Blazor.Mobile.UI.Components.Alerts;
+@using Piz.Blazor.Mobile.UI.Models
+@using Piz.Blazor.Mobile.UI.Page
+@using Piz.Blazor.Mobile.UI.Enum
+
+<Page PageTitle="Toast" IsBackActive="false"> 
+    <PageContent>
+        
+        <div class="wide-block pt-2 pb-2">
+            <ul class="listview">
+                <li>
+                     <button type="button" class="btn btn-secondary" @onclick="() => onclickbuttonShow(Position.top)" >
+                        Show Top
+                    </button>
+                </li>
+                <li>
+                     <button type="button" class="btn btn-secondary" @onclick="() => onclickbuttonShow(Position.bottom)" >
+                        Show Bottom
+                    </button>
+                </li>
+                 <li>
+                     <button type="button" class="btn btn-secondary" @onclick="onclickbuttonShowTapClose" >
+                        Show Tap to close
+                    </button>
+                </li>
+                
+            </ul>
+                
+         </div>
+
+          <Toast ID="toasttop" ToastText="Toast on top" Position="@position" Show="@showToast"/>
+          <Toast ID="toasttoptap" ToastText="Toast TAP TO CLOSE" BackgroundColor=ColorStyle.success Position=Position.top Show="@showTapToast" CloseType=CloseStyle.taptoclose/>
+         
+    </PageContent>
+</Page>
+
+@code {
+    private bool showToast = false;
+    private bool showTapToast = false;
+
+    private Position position = Position.top;
+
+    private void onclickbuttonShow(Position newpos)
+    {
+        position = newpos;
+        showToast = true;
+        showTapToast = false;
+    }
+
+     private void onclickbuttonShowTapClose()
+    {
+        showTapToast = true;
+        showToast = false;
+    }
+}
