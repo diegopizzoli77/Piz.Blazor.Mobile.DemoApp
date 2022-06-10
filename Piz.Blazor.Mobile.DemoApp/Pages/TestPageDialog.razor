@@ -1,0 +1,78 @@
+﻿@page "/testdialog"
+@using Piz.Blazor.Mobile.UI.Components.Alerts;
+@using Piz.Blazor.Mobile.UI.Models
+@using Piz.Blazor.Mobile.UI.Page
+@using Piz.Blazor.Mobile.UI.Enum
+
+<Page PageTitle="Dialog" IsBackActive="false"> 
+    <PageContent>
+        
+        <div class="wide-block pt-2 pb-2">
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#MydialogTest">
+                    Show Basic
+                </button>
+                 <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#MydialogTestBlock">
+                    Show Block button
+                </button>
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#MydialogTestIcon">
+                    Show With Icon
+                </button>
+                 <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#MydialogTestButtonIcon">
+                    Show With BUTTON Icon
+                </button>
+         </div>
+
+         <Dialog ID="MydialogTest" Title="My test dialog" ButtonList="@buttonItems">  
+             <DialogContent>
+                 <p>This is a dialog message</p>
+             </DialogContent>
+         </Dialog>
+
+          <Dialog ID="MydialogTestBlock" Title="My test dialog" ButtonList="@buttonItems" ButtonListStyle="ButtonListStyle.list">  
+             <DialogContent>
+                 <p>This is a dialog message</p>
+             </DialogContent>
+         </Dialog>
+
+         <Dialog ID="MydialogTestIcon" Title="My test dialog" ButtonList="@buttonItems" ButtonListStyle="ButtonListStyle.list" Icon="checkmark-circle">  
+             <DialogContent>
+                 <p>This is a dialog message</p>
+             </DialogContent>
+         </Dialog>
+
+          <Dialog ID="MydialogTestButtonIcon" Title="My test dialog" ButtonList="@iconbuttonItems" ButtonListStyle="ButtonListStyle.list">  
+             <DialogContent>
+                 <p>This is a dialog message</p>
+             </DialogContent>
+         </Dialog>
+    </PageContent>
+</Page>
+
+@code {
+    private List<ButtonItem> buttonItems = new List<ButtonItem>();
+    
+    private List<ButtonItem> iconbuttonItems = new List<ButtonItem>
+    {
+        new ButtonItem {Text="Share",Icon="share-outline" },
+        new ButtonItem {Text="Delete",Icon="trash-outline" }
+    };
+
+
+    protected override void OnInitialized()
+    {
+        buttonItems = new List<ButtonItem>
+            {
+                new ButtonItem {Text="Save" , OnclickEvent=new EventCallbackFactory().Create(this, onclickButton) },
+                new ButtonItem {Text="Cancel" }
+            };
+
+        base.OnInitialized();
+    }
+
+    
+
+    private void onclickButton()
+    {
+        Console.WriteLine("clicked");
+    }
+}
