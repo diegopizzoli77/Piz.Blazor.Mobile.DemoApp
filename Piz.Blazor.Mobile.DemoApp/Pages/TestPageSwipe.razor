@@ -1,0 +1,55 @@
+﻿@page "/testpageswipe"
+@using Piz.Blazor.Mobile.UI.Components.Modal
+@using Piz.Blazor.Mobile.UI.Page
+@using Piz.Blazor.Mobile.UI.Enum;
+
+<Page PageTitle="Action Modal Component" IsBackActive="false"> 
+    <PageContent>
+        
+         <div class="wide-block pt-2 pb-2">
+            <p>
+                <button type="button" class="btn btn-secondary" data-bs-toggle="offcanvas" data-bs-target="#MyLeftSwipe">Swipe Left</button>                                   
+                <button type="button" class="btn btn-secondary" data-bs-toggle="offcanvas" data-bs-target="#MyRightSwipe">Swipe Right</button>                               
+                <button type="button" class="btn btn-secondary" data-bs-toggle="offcanvas" data-bs-target="#MyTopSwipe">Swipe Top</button>                                   
+                <button type="button" class="btn btn-secondary" data-bs-toggle="offcanvas" data-bs-target="#MyBottomSwipe">Swipe Bottom</button>                                   
+            </p>                
+        </div>
+
+        <Swipe ID="MyLeftSwipe" Title="My test Swipe" Direction=SwipeDirection.Left>
+            <Content>
+                <div>
+                    Left Swipe
+                </div>
+            </Content>
+        </Swipe>
+
+         <Swipe ID="MyRightSwipe" Title="My test Swipe" Direction=SwipeDirection.Right>
+            <Content>
+                <div>
+                    Right Swipe
+                </div>
+            </Content>
+        </Swipe>
+
+         <Swipe ID="MyTopSwipe" Title="My test Swipe" Direction=SwipeDirection.Top>
+            <Content>
+                <div>
+                    Top Swipe
+                </div>
+            </Content>
+        </Swipe>
+
+         <Swipe ID="MyBottomSwipe" Title="My test Swipe" Direction=SwipeDirection.Bottom>
+            <Content>
+                <div>
+                    Bottom Swipe
+                </div>
+            </Content>
+        </Swipe>
+
+    </PageContent>
+</Page>
+
+@code {
+
+}
