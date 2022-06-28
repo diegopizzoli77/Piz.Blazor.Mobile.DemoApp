@@ -1,0 +1,35 @@
+﻿@page "/testcarousel"
+@using Piz.Blazor.Mobile.UI.Components.UIElement;
+@using Piz.Blazor.Mobile.UI.Models
+@using Piz.Blazor.Mobile.UI.Page
+@using Piz.Blazor.Mobile.UI.Enum
+
+<Page PageTitle="Carousel" IsBackActive="false"> 
+    <PageContent>
+       <Carousel Items="@items" ID="MyCarousel" WithControls="true">
+           <ItemTemplate>
+                <img src="@context.ImageUrl" alt="alt" class="imaged w-100 square">
+           </ItemTemplate>
+       </Carousel>
+        
+    </PageContent>
+</Page>
+
+@code
+{
+
+    private List<ImgItem> items = new List<ImgItem>
+    {
+        new ImgItem{Id="1",ImageUrl="_content/Piz.Blazor.Mobile.UI/assets/img/sample/photo/wide1.jpg"},
+        new ImgItem{Id="2",ImageUrl="_content/Piz.Blazor.Mobile.UI/assets/img/sample/photo/wide2.jpg"},
+        new ImgItem{Id="3",ImageUrl="_content/Piz.Blazor.Mobile.UI/assets/img/sample/photo/wide3.jpg"}
+    };
+   
+
+    internal class ImgItem
+    {
+        public string Id { get; set; }
+
+        public string ImageUrl { get; set; }
+    }
+}
