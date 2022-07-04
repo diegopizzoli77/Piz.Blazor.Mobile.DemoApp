@@ -1,0 +1,45 @@
+﻿@page "/testpageos"
+@using Piz.Blazor.Mobile.UI.Components.UIUtils
+@using Piz.Blazor.Mobile.UI.Page
+
+
+<Page PageTitle="OS Detection" IsBackActive="false"> 
+    <PageContent>
+        <OSDetection>
+            <NoMobileContent>
+               <div class="card text-center">
+                    <div class="card-body p-5">
+                        <h5 class="card-title">Not a Mobile Device</h5>
+                        <p class="card-text">
+                            You are currently browsing from computer. Try it on your mobile device. This box only
+                            visible when browsing from non mobile device.
+                        </p>
+                    </div>
+                </div>
+            </NoMobileContent>
+
+            <IosContent>
+                <div class="card text-center">
+                    <div class="card-body p-5">
+                        <h5 class="card-title">iOS Detected</h5>
+                        <p class="card-text">
+                            You can see this box because you are browsing from an iOS device.
+                        </p>
+                    </div>
+                </div>
+            </IosContent>
+
+            <AndroidContent>
+                <div class="card text-center">
+                <div class="card-body p-5">
+                    <h5 class="card-title">Android Detected</h5>
+                    <p class="card-text">
+                        You can see this box because you are browsing from an Android device.
+                    </p>
+                </div>
+            </div>
+            </AndroidContent>
+
+        </OSDetection>
+    </PageContent>
+</Page>
