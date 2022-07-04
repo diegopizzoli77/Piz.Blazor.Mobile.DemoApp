@@ -1,0 +1,26 @@
+﻿@page "/testtimeline"
+@using Piz.Blazor.Mobile.UI.Models
+@using Piz.Blazor.Mobile.UI.Page
+@using Piz.Blazor.Mobile.UI.Enum
+@using Piz.Blazor.Mobile.UI.Components.UIElement
+
+<Page PageTitle="TimeLine" IsBackActive="false">
+    <PageContent>       
+        <TimeLine Items="@items" Timed="true"></TimeLine>
+    </PageContent>
+</Page>
+
+@code {
+
+    private List<TimeLineItem> items = new List<TimeLineItem>
+        {
+            new TimeLineItem{Description="Find rider", Title="Rider", DotColor= ColorStyle.primary, Time= new TimeOnly(8,20)},
+            new TimeLineItem{Description="Rider go to resturant", Title="Pick pizza", DotColor= ColorStyle.warning, Time= new TimeOnly(8,50)},
+            new TimeLineItem{Description="Eating your pizza", Title="Eat", DotColor= ColorStyle.info}
+
+        };
+
+    
+
+}
+
