@@ -1,0 +1,46 @@
+﻿@page "/testpageloader"
+@using Piz.Blazor.Mobile.UI.Components.UIElement
+@using Piz.Blazor.Mobile.UI.Page
+@using Piz.Blazor.Mobile.UI.Components.Forms
+
+<Page PageTitle="Loader" IsBackActive="false"> 
+    <PageContent>
+        
+        <div class="wide-block pt-2 pb-2">
+		    <LoadingContainer Show="@loading"/> 
+            
+            <p>Element selected: @cityID</p>
+
+            <DropDownInput Datasource="@cities" @bind-Value="cityID" Label="Client Cities" EmptyItem="Select a City"/>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" @onclick="@(async() => await save())">My Save</button>
+            </div>  
+
+         </div>         
+         
+    </PageContent>
+</Page>
+
+@code {
+
+    private bool loading = false;
+   
+
+    static Dictionary<int, string> cities = new Dictionary<int, string>()
+    {
+        {1, "New York City"},
+        {2, "Milano"}
+    };
+
+    int cityID = 1;
+
+    private async Task save()
+    {
+        loading = true;
+        await Task.Delay(2000); // simulate loading data
+        loading = false;
+
+        Console.WriteLine("Data saved");
+    }
+}
