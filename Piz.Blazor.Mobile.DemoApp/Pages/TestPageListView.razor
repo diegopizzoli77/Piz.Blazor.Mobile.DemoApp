@@ -1,0 +1,47 @@
+﻿@page "/testlistview"
+
+@using Piz.Blazor.Mobile.UI.Models
+@using Piz.Blazor.Mobile.UI.Page
+@using Piz.Blazor.Mobile.UI.Components.ListGroup
+@using Piz.Blazor.Mobile.UI.Enum
+
+
+
+<Page PageTitle="Test ListView" IsBackActive="false"> 
+    <PageContent>
+        
+        <div>
+            
+            <ListViewTemplate Items="@items" TypeList="ListViewType.link">
+                <ItemTemplate>
+                    <ListViewItem CurrentItem="@context" OnClickItem="onclickElem"/>
+                </ItemTemplate>
+            </ListViewTemplate>
+              
+         </div>         
+         
+    </PageContent>
+</Page>
+
+@code {
+    private List<ListItem> items = new List<ListItem>();
+
+    protected override void OnInitialized()
+    {
+        items = new List<ListItem>()
+        {
+            new ListItem{ Id=1, Description="First Element" },
+            new ListItem{ Id=2, Description="Second Element" },
+            new ListItem{ Id=3, Description="Third Element" },
+            new ListItem{ Id=4, Description="Four Element" }
+        };
+
+        base.OnInitialized();
+    }
+
+    private void onclickElem(ListItem item)
+    {
+        Console.WriteLine($"Elemento : {item.Id}");
+    }
+
+}
