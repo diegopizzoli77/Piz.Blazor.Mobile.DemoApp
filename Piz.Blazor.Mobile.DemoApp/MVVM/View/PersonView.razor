@@ -1,0 +1,38 @@
+﻿@using Piz.Blazor.Mobile.UI.Components.UIElement
+@using Piz.Blazor.Mobile.UI.Enum
+
+
+<h3>PersonView</h3>
+
+<EditForm Model="@PViewModel"> 
+<div>
+    <p>Name : @PViewModel.Name</p>    
+    <p>Surname : @PViewModel.Surname</p>
+    <p>Password : @PViewModel.Password</p>
+    <p>BirthDay : @PViewModel.BirthDay</p>
+
+    <div class="form-group boxed">
+        
+            
+            <TextInput @bind-Value="@PViewModel.Name" Id="MyName" Label="Name" 
+            PlaceHolder="Enter your name" ValidationFor="@(() => PViewModel.Name)"
+            Style=InputStyle.boxed
+            />      
+            
+            <TextInput Type="InputType.password" @bind-Value="@PViewModel.Password" Id="MyPwd" Label="Password" 
+            PlaceHolder="Enter your password" ValidationFor="@(() => PViewModel.Password)"  Style=InputStyle.boxed/>
+
+            <DateTimeInput @bind-Value="@PViewModel.BirthDay" Id="MyPwd" Label="BirthDay" 
+            ValidationFor="@(() => PViewModel.BirthDay)"  Style=InputStyle.boxed/>
+            
+      
+    </div>
+
+    <button type="button" class="btn btn-secondary" @onclick="@PViewModel.Save" >
+                        Save
+    </button>
+</div>
+
+</EditForm>
+
+
