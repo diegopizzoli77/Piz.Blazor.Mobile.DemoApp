@@ -1,0 +1,46 @@
+﻿@using Piz.Blazor.Mobile.UI.Components.UIElement
+@using Piz.Blazor.Mobile.UI.Enum
+@using Piz.Blazor.Mobile.DemoApp.MVVM.ViewModel;
+@using Piz.Blazor.Mobile.UI.Components.Forms
+@using Microsoft.AspNetCore.Components.CompilerServices;
+
+<p>FirstLoad: @PViewModel.IsFirstLoad</p>
+
+@if (PViewModel.IsFirstLoad)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <div class="wide-block pt-2 pb-2">
+    <div class="form-group boxed">
+        <p>Name :     @PViewModel.Name</p>    
+        <p>Surname :  @PViewModel.Surname</p>
+        <p>Password : @PViewModel.Password</p>
+        <p>BirthDay : @PViewModel.BirthDay</p>
+    </div>
+
+    <DynamicForm Model="@PViewModel" OnValidSubmitHandle="@PViewModel.Save">                       
+        <CustomButtons>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">My Save</button>
+            </div>   
+        </CustomButtons>
+    </DynamicForm>
+
+    
+ </div>
+}
+    
+
+ @code
+ {
+        [Parameter]
+        public IPersonViewModel PViewModel { get; set; }
+
+        protected override void OnInitialized()
+        {
+            PViewModel.Load();
+            base.OnInitialized();
+        }
+ }

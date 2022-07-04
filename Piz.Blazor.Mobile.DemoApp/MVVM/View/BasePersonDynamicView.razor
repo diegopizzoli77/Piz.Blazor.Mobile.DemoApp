@@ -1,0 +1,8 @@
+﻿@using Piz.Blazor.MVVM.Components;
+@using Piz.Blazor.Mobile.DemoApp.MVVM.ViewModel;
+
+<BaseViewComponent TViewModel="IPersonViewModel">
+    <Content Context="viewmodel">
+        <PersonDynamicView PViewModel="@viewmodel" />
+    </Content>
+</BaseViewComponent>
