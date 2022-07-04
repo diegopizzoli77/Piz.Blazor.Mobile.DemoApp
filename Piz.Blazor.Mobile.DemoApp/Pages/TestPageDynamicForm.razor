@@ -1,0 +1,68 @@
+﻿@page "/testdynamicform"
+
+@using Piz.Blazor.Mobile.UI.Components.UIElement
+@using Piz.Blazor.Mobile.UI.Page
+@using Piz.Blazor.Mobile.UI.Components.Forms
+@using Microsoft.AspNetCore.Components.CompilerServices;
+@using System.ComponentModel.DataAnnotations;
+
+<Page PageTitle="Test Dyamic Form" IsBackActive="false"> 
+    <PageContent>
+        
+        <div class="wide-block pt-2 pb-2">
+            <DynamicForm Model="@model" OnValidSubmitHandle="save">                       
+                <CustomButtons>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">My Save</button>
+                    </div>   
+                </CustomButtons>
+            </DynamicForm>
+
+            <p>Element selected: @cityID</p>
+
+            <DropDownInput Datasource="@cities" @bind-Value="cityID" Label="Client Cities" EmptyItem="Select a City"/>
+         </div>         
+         
+    </PageContent>
+</Page>
+
+@code {
+
+    static SimplePersonModel model = new SimplePersonModel() { Name = "Diego", Surname = "Pizzoli",BirthDay=new DateTime(1977,1,12) };
+
+    static Dictionary<int, string> cities = new Dictionary<int, string>()
+    {
+        {1, "New York City"},
+        {2, "Milano"}
+    };
+
+    int cityID = 1;
+
+    private void save()
+    {
+        Console.WriteLine("Salvataggio effetturato!!!");
+    }
+
+    internal class SimplePersonModel
+    {
+
+        [Required]
+        [Display(Name = "First Name")]
+        [DataType(DataType.Text)]
+        public string Name { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        [DataType(DataType.Text)]
+        public string Surname { get; set; }
+
+        [Display(Name = "Password")]
+        [DataType(DataType.Password)]        
+        [StringLength(10, MinimumLength = 6, ErrorMessage = "The Password range should be 6 to 10")]
+        public string Password { get; set; }
+
+        [Display(Name = "BirthDay")]
+        [DataType(DataType.DateTime)]
+        public DateTime BirthDay { get; set; }
+    }
+}
